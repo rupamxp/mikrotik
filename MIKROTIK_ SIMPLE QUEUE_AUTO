@@ -1,0 +1,24 @@
+queue simple add name=DIGITAL_MASTER max-limit=100M/100M target=172.31.26.0/27
+:for x from 1 to 29 do={/queue simple add name="___digital-$x" max-limit=40M/40M parent=DIGITAL_MASTER priority=1/1 target="172.31.26.$x"}
+
+queue simple add name=BOE_MGMT_MASTER max-limit=100M/100M target=172.31.24.0/28
+:for x from 1 to 16 do={/queue simple add name="___IT-$x" max-limit=20M/20M parent=BOE_MGMT_MASTER priority=2/2 target="172.31.24.$x"}
+
+queue simple add name=BOE_COMMON max-limit=20M/20M target=172.31.24.16/28
+:for x from 17 to 29 do={/queue simple add name="___boe_common-$x" max-limit=5M/5M parent=BOE_COMMON priority=8/8 target="172.31.24.$x"}
+
+queue simple add name=DHCP_WIFI_MGMT max-limit=40M/40M target=10.100.250.0/27
+:for x from 1 to 32 do={/queue simple add name="___wifi_mgmt-$x" max-limit=10M/10M parent=DHCP_WIFI_MGMT priority=4/4 target="10.100.250.$x"}
+
+queue simple add name=DHCP_WIFI_EXECUTIVE max-limit=20M/20M target=10.100.250.32/27
+:for x from 33 to 64 do={/queue simple add name="___wifi_executive-$x" max-limit=5M/5M parent=DHCP_WIFI_EXECUTIVE priority=8/8 target="10.100.250.$x"}
+
+queue simple add name=DHCP_WIFI_COMMON max-limit=10M/10M target=10.100.250.64/26
+:for x from 65 to 127 do={/queue simple add name="___wifi_common-$x" max-limit=2M/2M parent=DHCP_WIFI_COMMON priority=8/8 target="10.100.250.$x"}
+
+queue simple add name=AUTOMATION max-limit=10M/10M target=192.168.20.0/24
+
+
+
+
+
